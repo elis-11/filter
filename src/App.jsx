@@ -7,19 +7,19 @@ function App() {
       _id: "f1",
       name: "Toaster",
       price: 40,
-      image: "https://source.unsplash.com/100x100/?sandwich,toaster",
+      image: "https://source.unsplash.com/120x120/?sandwich,toaster",
     },
     {
       _id: "f2",
       name: "Fridge",
       price: 470,
-      image: "https://source.unsplash.com/100x100/?fridge",
+      image: "https://source.unsplash.com/120x120/?fridge",
     },
     {
       _id: "f3",
       name: "Toaster",
       price: 55,
-      image: "https://source.unsplash.com/100x100/?sandwich,toaster",
+      image: "https://source.unsplash.com/120x120/?toaster",
     },
   ]);
 
@@ -34,8 +34,19 @@ function App() {
   if (productName) {
     filteredProducts = filteredProducts.filter((product) => {
       return product.name.toLowerCase().includes(productName.toLowerCase());
-      console.log(product);
     });
+  }
+
+  if (priceMin) {
+    filteredProducts = filteredProducts.filter(product =>{
+      return product.price >= priceMin  
+    })
+  }
+
+  if (priceMax) {
+    filteredProducts = filteredProducts.filter(product =>{
+      return product.price <= priceMax
+    })
   }
 
   return (
@@ -44,12 +55,12 @@ function App() {
         <div className="productName">
           Product:
           <input
-            value={productName}
+            type="text"
             placeholder="Product name..."
+            value={productName}
             onChange={(e) => {
               setProductName(e.target.value);
             }}
-            type="text"
           />
         </div>
         <div className="productMin">
@@ -76,6 +87,7 @@ function App() {
       <div className="products">
         {filteredProducts.map((product) => (
           <div key={product._id} className="product">
+              <img src={product.image} alt={product.name} />
             <div className="item">{product.name}</div>
             <div className="item">{product.price}</div>
           </div>
