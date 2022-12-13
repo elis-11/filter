@@ -24,8 +24,8 @@ function App() {
   ]);
 
   const [productName, setProductName] = useState("");
-  const [priceMin, setPriceMin] = useState(0);
-  const [priceMax, setPriceMax] = useState(0);
+  const [priceMin, setPriceMin] = useState(null);
+  const [priceMax, setPriceMax] = useState(null);
   console.log(productName);
   console.log(priceMin);
   console.log(priceMax);
