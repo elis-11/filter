@@ -1,5 +1,5 @@
 import { useState } from "react";
-import carsData from "./cars.json"
+import carsData from "./cars.json";
 import "./App.css";
 
 function App() {
@@ -7,14 +7,7 @@ function App() {
   const [productName, setProductName] = useState("");
   const [priceMin, setPriceMin] = useState(0);
   const [priceMax, setPriceMax] = useState(0);
-  const [checkedUsing, setCheckingUsing] = useState(false);
-  console.log(productName);
-  console.log(priceMin);
-  console.log(priceMax);
-
-  const handleChangeUsing = () => {
-    setCheckingUsing(!checkedUsing);
-  };
+  const [filteredCategory, setFilteredCategory] = useState();
 
   let filteredCars = cars;
   if (productName) {
@@ -34,6 +27,13 @@ function App() {
       return car.price <= priceMax;
     });
   }
+  if (filteredCategory) {
+    filteredCars = filteredCars.filter((car) => {
+      return car.category === filteredCategory;
+    });
+  }
+
+
 
   return (
     <div className="App">
@@ -69,14 +69,35 @@ function App() {
             />
           </div>
         </div>
-        <div className="checkbox">
-          new
-          <input 
-          type="checkbox"
-          label="new"
-          value={checkedUsing}
-          onChange={handleChangeUsing}
-          />
+        <div className="categories">
+          <h4>Category:</h4>
+          <div className="filterByCategory">
+            <input
+              type="checkbox"
+              name="categories"
+              value="Toyota"
+              onChange={filteredCategory}
+            />
+            <span>Toyota</span>
+          </div>
+          <div className="filterByCategory">
+            <input
+              type="checkbox"
+              name="categories"
+              value="BMW"
+              onChange={filteredCategory}
+            />
+            <span>BMW</span>
+          </div>
+          <div className="filterByCategory">
+            <input
+              type="checkbox"
+              name="categories"
+              value="Lexus"
+              onChange={filteredCategory}
+            />
+            <span>Lexus</span>
+          </div>
         </div>
       </div>
 
