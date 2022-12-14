@@ -5,10 +5,10 @@ function App() {
   const [cars, setCars] = useState([
     {
       _id: "f1",
-      name: "Ford F-150",
+      name: "BMW 6 Series",
       price: 18000,
       year: 2012,
-      image: "https://source.unsplash.com/120x120/?car,Ford_F-150",
+      image: "https://source.unsplash.com/120x120/?car,BMW_6_Series",
     },
     {
       _id: "f2",
@@ -62,8 +62,10 @@ function App() {
   ]);
 
   const [productName, setProductName] = useState("");
+  const [partOfName, setPartOfName] = useState("");
   const [priceMin, setPriceMin] = useState(null);
   const [priceMax, setPriceMax] = useState(null);
+  const [visible, setVisible] = useState(false)
   console.log(productName);
   console.log(priceMin);
   console.log(priceMax);
@@ -74,6 +76,9 @@ function App() {
       return car.name.toLowerCase().includes(productName.toLowerCase());
     });
   }
+if (partOfName){
+  
+}
 
   if (priceMin) {
     filteredProducts = filteredProducts.filter(car =>{
@@ -89,9 +94,10 @@ function App() {
 
   return (
     <div className="App">
-      <div className="filter">
+      <div className="search">
+      <div className="input">
         <div className="productName">
-          Car name:
+          Car name: {' '}
           <input
             type="text"
             value={productName}
@@ -100,8 +106,8 @@ function App() {
             }}
           />
         </div>
-        <div className="productMin">
-          Price Min:
+        <div className="priceMin">
+          Price Min: {' '}
           <input
             type="number"
             value={priceMin}
@@ -109,15 +115,23 @@ function App() {
               setPriceMin(e.target.value);
             }}
           />
+          {priceMin > 10  && 
+          <button
+          >button</button>
+        }
         </div>
-        <div className="productMax">
-          Price Max:
+        <div className="priceMax">
+          Price Max: {' '}
           <input
             type="number"
             value={priceMax}
             onChange={(e) => setPriceMax(e.target.value)}
           />
         </div>
+      </div>
+      <div className="checkbox">
+
+      </div>
       </div>
 
       <div className="cars">

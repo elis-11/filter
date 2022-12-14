@@ -4,13 +4,17 @@
   padding: 2rem;
   text-align: center;
 }
-.cars{
+.search {
+  display: flex;
+  justify-content: space-evenly;
+}
+.cars {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-.car{
-  margin: .5rem;
+.car {
+  margin: 0.5rem;
   border: 1px solid grey;
   padding: 2rem;
 }
