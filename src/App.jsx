@@ -2,24 +2,54 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [products, setProducts] = useState([
+  const [cars, setCars] = useState([
     {
       _id: "f1",
-      name: "Toaster",
-      price: 40,
-      image: "https://source.unsplash.com/120x120/?sandwich,toaster",
+      name: "Ford F-150",
+      price: 18000,
+      image: "https://source.unsplash.com/120x120/?car,Ford_F-150",
     },
     {
       _id: "f2",
-      name: "Fridge",
-      price: 470,
-      image: "https://source.unsplash.com/120x120/?fridge",
+      name: "Toyota Prius",
+      price: 36000,
+      image: "https://source.unsplash.com/120x120/?car,Toyota_Prius",
     },
     {
       _id: "f3",
-      name: "Toaster",
-      price: 55,
-      image: "https://source.unsplash.com/120x120/?toaster",
+      name: "BMW",
+      price: 40000,
+      image: "https://source.unsplash.com/120x120/?car,bmw",
+    },
+    {
+      _id: "f4",
+      name: "BMW",
+      price: 19000,
+      image: "https://source.unsplash.com/120x120/?car,bmw",
+    },
+    {
+      _id: "f5",
+      name: "Toyota Camry",
+      price: 4000,
+      image: "https://source.unsplash.com/120x120/?car,Toyota_Camry",
+    },
+    {
+      _id: "f6",
+      name: "Toyota Land Cruiser",
+      price: 70000,
+      image: "https://source.unsplash.com/120x120/?car,toyota_Land_Cruiser",
+    },
+    {
+      _id: "f7",
+      name: "Lexus GS 350",
+      price: 5000,
+      image: "https://source.unsplash.com/120x120/?car,Lexus_GS_350",
+    },
+    {
+      _id: "f8",
+      name: "Toyota Corolla",
+      price: 15000,
+      image: "https://source.unsplash.com/120x120/?car,Toyota_Corolla",
     },
   ]);
 
@@ -30,22 +60,22 @@ function App() {
   console.log(priceMin);
   console.log(priceMax);
 
-  let filteredProducts = products;
+  let filteredProducts = cars;
   if (productName) {
-    filteredProducts = filteredProducts.filter((product) => {
-      return product.name.toLowerCase().includes(productName.toLowerCase());
+    filteredProducts = filteredProducts.filter((car) => {
+      return car.name.toLowerCase().includes(productName.toLowerCase());
     });
   }
 
   if (priceMin) {
-    filteredProducts = filteredProducts.filter(product =>{
-      return product.price >= priceMin  
+    filteredProducts = filteredProducts.filter(car =>{
+      return car.price >= priceMin  
     })
   }
 
   if (priceMax) {
-    filteredProducts = filteredProducts.filter(product =>{
-      return product.price <= priceMax
+    filteredProducts = filteredProducts.filter(car =>{
+      return car.price <= priceMax
     })
   }
 
@@ -53,10 +83,9 @@ function App() {
     <div className="App">
       <div className="filter">
         <div className="productName">
-          Product:
+          Car name:
           <input
             type="text"
-            placeholder="Product name..."
             value={productName}
             onChange={(e) => {
               setProductName(e.target.value);
@@ -67,7 +96,6 @@ function App() {
           Price Min:
           <input
             type="number"
-            // onChange={}
             value={priceMin}
             onChange={(e) => {
               setPriceMin(e.target.value);
@@ -84,12 +112,12 @@ function App() {
         </div>
       </div>
 
-      <div className="products">
-        {filteredProducts.map((product) => (
-          <div key={product._id} className="product">
-              <img src={product.image} alt={product.name} />
-            <div className="item">{product.name}</div>
-            <div className="item">{product.price}</div>
+      <div className="cars">
+        {filteredProducts.map((car) => (
+          <div key={car._id} className="car">
+              <img src={car.image} alt={car.name} />
+            <div className="item">{car.name}</div>
+            <div className="item">{car.price}</div>
           </div>
         ))}
       </div>
