@@ -115,7 +115,7 @@ if (partOfName){
               setPriceMin(e.target.value);
             }}
           />
-          {priceMin > 10  && 
+          {priceMin >= 10  && 
           <button
           >button</button>
         }
