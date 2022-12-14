@@ -7,48 +7,56 @@ function App() {
       _id: "f1",
       name: "Ford F-150",
       price: 18000,
+      year: 2012,
       image: "https://source.unsplash.com/120x120/?car,Ford_F-150",
     },
     {
       _id: "f2",
       name: "Toyota Prius",
       price: 36000,
+      year: 2018,
       image: "https://source.unsplash.com/120x120/?car,Toyota_Prius",
     },
     {
       _id: "f3",
-      name: "BMW",
+      name: "BMW 7 Series",
       price: 40000,
-      image: "https://source.unsplash.com/120x120/?car,bmw",
+      year: 2015,
+      image: "https://source.unsplash.com/120x120/?car,BMW_7_Series",
     },
     {
       _id: "f4",
-      name: "BMW",
+      name: "BMW 8 Series",
       price: 19000,
-      image: "https://source.unsplash.com/120x120/?car,bmw",
+      year: 2014,
+      image: "https://source.unsplash.com/120x120/?car,BMW_8_Series",
     },
     {
       _id: "f5",
       name: "Toyota Camry",
       price: 4000,
+      year: 2000,
       image: "https://source.unsplash.com/120x120/?car,Toyota_Camry",
     },
     {
       _id: "f6",
       name: "Toyota Land Cruiser",
       price: 70000,
+      year: 2020,
       image: "https://source.unsplash.com/120x120/?car,toyota_Land_Cruiser",
     },
     {
       _id: "f7",
       name: "Lexus GS 350",
       price: 5000,
+      year: 2011,
       image: "https://source.unsplash.com/120x120/?car,Lexus_GS_350",
     },
     {
       _id: "f8",
       name: "Toyota Corolla",
       price: 15000,
+      year: 2019,
       image: "https://source.unsplash.com/120x120/?car,Toyota_Corolla",
     },
   ]);
@@ -116,8 +124,10 @@ function App() {
         {filteredProducts.map((car) => (
           <div key={car._id} className="car">
               <img src={car.image} alt={car.name} />
-            <div className="item">{car.name}</div>
-            <div className="item">{car.price}</div>
+            <div className="name">{car.name}</div>
+            <div className="price">price: {car.price} €</div>
+            <div className="year">{car.year} year</div>
+
           </div>
         ))}
       </div>
