@@ -7,13 +7,30 @@ function App() {
   const [productName, setProductName] = useState("");
   const [priceMin, setPriceMin] = useState(0);
   const [priceMax, setPriceMax] = useState(0);
-  const [filteredCategory, setFilteredCategory] = useState("");
+  const [filteredCategory, setFilteredCategory] = useState([]);
   let filteredCars = cars;
 
-console.log(filteredCategory)
-  if (filteredCategory) {
+  console.log(filteredCategory);
+
+  const onFilteredCategoryChange = (e) => {
+    // wenn checkbox gechecked, dann add e.target.value zu array
+    if (e.target.checked) {
+      setFilteredCategory([...filteredCategory, e.target.value]);
+    }
+    // wenn checkbox unchecked, dann remove e.target.value from array
+    else {
+      const newFilteredCategory = filteredCategory.filter((item) => {
+      return item !== e.target.value;
+
+      });
+      setFilteredCategory(newFilteredCategory);
+    }
+
+  };
+
+  if (filteredCategory.length) {
     filteredCars = filteredCars.filter((car) => {
-      return car.category.includes(filteredCategory);
+      return filteredCategory.includes(car.category);
     });
   }
 
@@ -80,7 +97,7 @@ console.log(filteredCategory)
               type="checkbox"
               name="categories"
               value="Toyota"
-              onChange={(e) =>  setFilteredCategory(e.target.checked ? e.target.value : '')}
+              onChange={onFilteredCategoryChange}
             />
             <span>Toyota</span>
           </div>
@@ -89,7 +106,7 @@ console.log(filteredCategory)
               type="checkbox"
               name="categories"
               value="BMW"
-              onChange={(e) => setFilteredCategory(e.target.checked ? e.target.value : '')}
+              onChange={onFilteredCategoryChange}
             />
             <span>BMW</span>
           </div>
@@ -98,7 +115,7 @@ console.log(filteredCategory)
               type="checkbox"
               name="categories"
               value="Lexus"
-              onChange={(e) => setFilteredCategory(e.target.checked ? e.target.value : '')}
+              onChange={onFilteredCategoryChange}
             />
             <span>Lexus</span>
           </div>
