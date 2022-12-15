@@ -7,9 +7,20 @@ function App() {
   const [productName, setProductName] = useState("");
   const [priceMin, setPriceMin] = useState(0);
   const [priceMax, setPriceMax] = useState(0);
-  const [filteredCategory, setFilteredCategory] = useState();
-
+  const [filteredCategory, setFilteredCategory] = useState("");
   let filteredCars = cars;
+
+console.log(filteredCategory)
+  if (filteredCategory) {
+    filteredCars = filteredCars.filter((car) => {
+      return car.category.includes(filteredCategory);
+    });
+  }
+
+  // const checkedItems = filteredCategory.length
+  //   ? filteredCategory.f((total, item) => total + ", " + item)
+  //   : "";
+
   if (productName) {
     filteredCars = filteredCars.filter((car) => {
       return car.name.toLowerCase().includes(productName.toLowerCase());
@@ -27,13 +38,6 @@ function App() {
       return car.price <= priceMax;
     });
   }
-  if (filteredCategory) {
-    filteredCars = filteredCars.filter((car) => {
-      return car.category === filteredCategory;
-    });
-  }
-
-
 
   return (
     <div className="App">
@@ -76,7 +80,7 @@ function App() {
               type="checkbox"
               name="categories"
               value="Toyota"
-              onChange={filteredCategory}
+              onChange={(e) =>  setFilteredCategory(e.target.checked ? e.target.value : '')}
             />
             <span>Toyota</span>
           </div>
@@ -85,7 +89,7 @@ function App() {
               type="checkbox"
               name="categories"
               value="BMW"
-              onChange={filteredCategory}
+              onChange={(e) => setFilteredCategory(e.target.checked ? e.target.value : '')}
             />
             <span>BMW</span>
           </div>
@@ -94,7 +98,7 @@ function App() {
               type="checkbox"
               name="categories"
               value="Lexus"
-              onChange={filteredCategory}
+              onChange={(e) => setFilteredCategory(e.target.checked ? e.target.value : '')}
             />
             <span>Lexus</span>
           </div>
