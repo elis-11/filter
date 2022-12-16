@@ -60,6 +60,7 @@ function App() {
     <div className="App">
       <div className="search">
         <div className="input">
+          <h4>Input: </h4>
           <div className="productName">
             Car name:{" "}
             <input
