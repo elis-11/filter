@@ -20,12 +20,10 @@ function App() {
     // wenn checkbox unchecked, dann remove e.target.value from array
     else {
       const newFilteredCategory = filteredCategory.filter((item) => {
-      return item !== e.target.value;
-
+        return item !== e.target.value;
       });
       setFilteredCategory(newFilteredCategory);
     }
-
   };
 
   if (filteredCategory.length) {
@@ -33,10 +31,6 @@ function App() {
       return filteredCategory.includes(car.category);
     });
   }
-
-  // const checkedItems = filteredCategory.length
-  //   ? filteredCategory.f((total, item) => total + ", " + item)
-  //   : "";
 
   if (productName) {
     filteredCars = filteredCars.filter((car) => {
